@@ -1,0 +1,40 @@
+/*
+  Author: Tarik LaRoda (A00440772)
+  Author: Rolvin Monteiro (A00438472)
+  This file contains the css for projectXS.html
+*/
+canvas {
+  padding: 20px;
+}
+/* create the background */
+div.ui-grid-c {
+  background-color: rgb(195, 217, 201);
+  padding: 20px;
+}
+.ui-slider-input {
+  display: none !important;
+}
+.blue {
+  color: blue;
+}
+div.textbox {
+  margin-left: 50px;
+}
+#titleTable {
+  align-items: center;
+  font-size: 50px;
+  color: blue;
+}
+
+/* Make select options grey */
+#viewChaptersSelect,
+#graphsSelect,
+#readoutsSelect {
+  color: slategray;
+}
+
+/* Make select options blue */
+#viewChaptersOption,
+#insulationOption {
+  color: blue;
+}

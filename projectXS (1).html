@@ -1,0 +1,386 @@
+<!DOCTYPE html5>
+<!--
+    Author:  Tarik LaRoda (A00440772)
+    Author: Rolvin Monteiro (A00438472)
+    Author: Kiitan Mojeed (A00425797)
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="themeC.css" />
+    <link rel="stylesheet" href="jquery.mobile.icons.min.css" />
+    <link
+      rel="stylesheet"
+      href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css"
+    />
+    <link rel="stylesheet" href="projectXS.css" />
+
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="./projectXS.js"></script>
+    <title>Project XS</title>
+  </head>
+
+  <body onload="setup()">
+    <div data-role="page" id="viewChaptersPage">
+      <div role="main" class="ui-content">
+        <!--First Grid, to show Title, Image and Select-->
+        <div class="ui-grid-c ui-responsive">
+          <div class="ui-block-a">
+            <!--This is where the Project Title goes-->
+            <!--Needs to be centered in the middle-->
+            <table id="titleTable">
+              <br /><br /><br />
+              <tr>
+                <th>PROJECT XS</th>
+              </tr>
+            </table>
+          </div>
+          <div class="ui-block-b">
+            <!--This is where the shipcrate image goes-->
+            <img
+              src="./shipCrate.jpg"
+              height="194"
+              width="260"
+              alt="image of shipCrate"
+            />
+          </div>
+          <div class="ui-block-c">
+            <!--This is where the option menu goes goes-->
+            <br /><br /><br />
+            <select
+              name=""
+              id="viewChaptersSelect"
+              onchange="showPage()"
+              data-mini="true"
+            >
+              <option
+                value="VIEW CHAPTERS"
+                id="viewChaptersOption"
+                class="blue"
+              >
+                VIEW CHAPTERS
+              </option>
+              <option value="Ventilation and Drafts">
+                Ventilation and Drafts
+              </option>
+              <option value="Insulation" id="insulationOption" class="blue">
+                Insulation
+              </option>
+              <option value="Size and Proportion">Size and Proportion</option>
+              <option value="Immediate Context">Immediate Context</option>
+              <option value="Construction Details">Construction Details</option>
+              <option value="Energy Sources">Energy Sources</option>
+              <option value="Refrigeration Cycle">Refrigeration Cycle</option>
+              <option value="Psychometrics">Psychometrics</option>
+              <option value="Environmental Impacts">
+                Environmental Impacts
+              </option>
+              <option value="Radiation and Glazing">
+                Radiation and Glazing
+              </option>
+            </select>
+          </div>
+          <div class="ui-block-d">
+            <!--Nothing-->
+          </div>
+        </div>
+        <!---->
+        <!--Second Grid that will be made visible-->
+        <div class="ui-grid-c ui-responsive" id="insulationPage">
+          <!--First ROW-->
+          <div class="ui-block-a">
+            <!--Canvas to Draw plan goes here-->
+            <canvas id="planCanvas" height="178" width="321"></canvas>
+          </div>
+          <div class="ui-block-b">
+            <!--Empty Space-->
+          </div>
+          <div class="ui-block-c">
+            <!--Canas to Draw Elevation goes here-->
+            <canvas id="elevationCanvas" height="154" width="321"></canvas>
+          </div>
+          <div class="ui-block-d">
+            <!--Empty Space-->
+          </div>
+          <!--End of First Row-->
+
+          <!--Second Row-->
+          <div class="ui-block-a">
+            <select name="" id="" data-theme="c" data-mini="true">
+              <option value="">PLACES WITH DEGREE-DAYS</option>
+              <option value="">NV Alert - 13030</option>
+              <option value="">NV Iqaluit - 9980</option>
+              <option value="">NV Resolution Island - 9000</option>
+              <option value="">NW Yellowknife - 8170</option>
+              <option value="">ON Attawapiskat - 7100</option>
+              <option value="">MB FlinFlon - 6440</option>
+              <option value="">QC Noranda - 6050</option>
+              <option value="">MB Winnipeg - 5670</option>
+              <option value="">NB Campbellton - 5500</option>
+              <option value="">AL Calgary 5000</option>
+              <option value="">NL St. Johns - 4800</option>
+              <option value="">NB Frederiction - 4670</option>
+              <option value="">ON Ottawa - 4520</option>
+              <option value="">PE Charlottetown - 4460</option>
+              <option value="">QC Montreal Centre - 4300</option>
+              <option value="">NS Halifax - 4000</option>
+              <option value="">ON Toronto CH - 3500</option>
+              <option value="">ON Windsor - 3400</option>
+              <option value="">BC Nanaimo - 3000</option>
+            </select>
+          </div>
+          <div class="ui-block-b">
+            <select
+              name="optionBlockb"
+              id="optionBlockb"
+              onchange="display()"
+              data-theme="c"
+              data-mini="true"
+            >
+              <option value="0">OPAQUE CONSTRUCTION WITH R or R/INCH</option>
+              <option value="1">Bare Container (R1)</option>
+              <option value="2">Plus Interior Finish, Uninsulated (R2)</option>
+              <option value="3">Plus Finish and Cellulose (R3/in)</option>
+              <option value="4">Plus Finish and Fiberglass (R3/in)</option>
+              <option value="5">Plus Finish and Spray Foam (R6/in)</option>
+            </select>
+          </div>
+          <div class="ui-block-c">
+            <input
+              type="range"
+              value="0"
+              min="0"
+              max="20"
+              id="planSld"
+              name="planSld"
+              onchange="display()"
+              data-theme="c"
+            />
+
+            <div class="textbox">
+              <table>
+                <tr>
+                  <td>
+                    <input type="text" size="1" id="txtOpaqueThickness" />
+                  </td>
+                  <td>( " ) Opaque Thickness</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="ui-block-d"></div>
+          <!--End of Second Row-->
+
+          <!--Third Row-->
+          <div class="ui-block-a">
+            <div class="textbox">
+              <table>
+                <tr>
+                  <td><input type="text" name="" id="" size="1" /></td>
+                  <td>(R) Opaque Thermal Resistance</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="ui-block-b">
+            <input type="range" name="" id="" data-theme="c" />
+            <div class="textbox">
+              <table>
+                <tr>
+                  <td><input type="text" name="" id="" size="1" /></td>
+                  <td>(R) Door Thermal Resistance</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="ui-block-c">
+            <input type="range" name="" id="" data-theme="c" />
+            <div class="textbox">
+              <table>
+                <tr>
+                  <td><input type="text" name="" id="" size="1" /></td>
+                  <td>(R) Window Thermal Resistance</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="ui-block-d"></div>
+          <!--End of Third Row-->
+
+          <!--Fourth Row-->
+          <div class="ui-block-a">
+            <input
+              type="range"
+              min="0"
+              max="10"
+              name="windowArea"
+              id="windowArea"
+              onchange="display()"
+              data-theme="c"
+            />
+            <div class="textbox">
+              <table>
+                <tr>
+                  <td>
+                    <input type="text" name="" id="txtWindowArea" size="1" />
+                  </td>
+                  <td>(SQ.FT) Window Area</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="ui-block-b">
+            <div class="textbox">
+              <table>
+                <tr>
+                  <td><input type="text" name="" id="" size="1" /></td>
+                  <td>(R) Effective Overall Thermal Resistance</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="ui-block-c">
+            <div class="textbox">
+              <table>
+                <tr>
+                  <td><input type="text" name="" id="" size="1" /></td>
+                  <td>(kWh) Annual Energy</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="ui-block-d"></div>
+          <!--End of Fourth Row-->
+
+          <!--Fifth Row-->
+          <div class="ui-block-a">
+            <select name="" id="graphsSelect" data-mini="true">
+              <option value="">GRAPHS</option>
+              <option value="">Graph 1</option>
+              <option value="">Graph 2</option>
+            </select>
+          </div>
+          <div class="ui-block-b">
+            <select name="" id="readoutsSelect" data-mini="true">
+              <option value="">READOUTS</option>
+              <option value="">Net to Gross Floor Area</option>
+              <option value="">Energy Bill Per Net Floor Area</option>
+            </select>
+          </div>
+          <div class="ui-block-c">
+            <select id="concepts" onchange="showConcepts()">
+              <option value="concepts">CONCEPTS</option>
+              <option value="local conditions">Local Conditions</option>
+
+              <option value="annual energy">Annual Energy Budget</option>
+              <option value="drafts and ventilation">
+                Drafts and Ventilation
+              </option>
+              <option value="insulation and heat">
+                Insulation and Heat Loss
+              </option>
+              <option value="materials and insulation">
+                Materials and Insulation
+              </option>
+              <option value="environmental impact">Environmental Impact</option>
+            </select>
+          </div>
+          <div class="ui-block-d"></div>
+          <!--End of Fifth Row-->
+        </div>
+        <!--Concepts divission-->
+        <div id="localConditionsPage">
+          Local conditions:
+          <br />
+          <br />
+          Heating demand is given in heating degree-days. The length of a
+          Canadian heating season is the number of days below 18C. Coldness is
+          the difference between a desired indoor temperature of 20C and the
+          average outdoor temperature on those days.
+          <br />
+          <br />
+          Humidity and especially windiness of a location also add to heating
+          demand but are discussed elsewhere. <br />
+          <br />
+          Warmer climates imply a cooling load: also subject for other chapters.
+          <br />
+          <br />
+          Please note that to reflect the Canadian experience, this app mixes
+          units: Celsius for temperature, for example, but inches and feet for
+          dimensons.
+        </div>
+        <div id="annualEnergyBudgetPage">
+          Annual Energy Budget <br /><br />
+          Envelope heat loss is only part of an energy budget. Lights, hot water
+          appliances and electronics also consume energy. In ths chapter those
+          other loads are fixed, on the assumpton that use of the building
+          remains constant in all locations. <br /><br />
+          Envelope heat loss has at least two components: the
+          effectivelyconductive losses that can be reduced by insulaton, and
+          losses due to ventilation and drafts. Both are proportional to heating
+          demand. looking at the energy budget graph, you will see that changing
+          the insulation levels changes the conductive or insulation losses but
+          not those due to air movement.
+        </div>
+        <div id="draftsAndVentilationPage">
+          Drafts and Ventilation:<br /><br />
+          Realistically, a larger window would admit more drafts, especally at
+          the lower end of the quality scale, but that effect is ignored in the
+          insulation chapter.<br /><br />
+          The drafts and ventilationchapter explains how energy losses due to
+          infiltration are controlled by membranes, sealants, joint design, and
+          meticulous quality control. It shows how ventilation losses can be
+          managed through heat exchange, flow controls, and careful use of
+          operable windows and vents.
+        </div>
+        <div id="insulationAndHeatLossPage">
+          Insulation and Heat Loss: <br /><br />
+          In North America, thermal resisitance is measured in R-values. The
+          resistance of a material barrier is a product of its resistivity. In
+          R/inch, and the inches of thickness. The actual effectiveness of
+          insulation depends on the installaton of other factors, but this app
+          gives drywall an R/inc of 1, fiberglass and cellulose insulation an
+          R/inch of 3, and urethane spray an R/inch of 6. <br />
+          <br />
+          In thin and poorly insulating assemblies, air films become
+          significant. This is how painted sheet steel ends up with a nominal R
+          of 1. When assemblies are alyered. R values can smply be totalled.
+        </div>
+        <div id="materialsAndInsulationPage">
+          Materials and Insulation: <br />
+          <br />
+          Heat flow is inversely related to thermal resistance. The conduction
+          of heat through a material is given as a U value, which is equal to
+          1/R. Add layers to a single R value before finding their U value.
+          <br />
+          <br />
+          Heat loss is a product of thermal demand and conductive liability.
+          Thermal demand consolidates temperature difference and time, as in
+          degree days. Thermal liability is a product of surface area and
+          conductance.<br /><br />
+          The total thermal liability of an envelope is a sum of the liability
+          of its portions> average conductance divides the total liability by
+          the total area. The effective R-value of an envelope is the inverse of
+          average conductance<br />
+          <br />
+          Note that high R-value portions of an envelope have a smaller effect
+          on the effective R-value than might be supposed. Conversely, low
+          R-value portions of an envelope "such as windows have a larger effect
+          on overall heat loss than their small area may suggest. <br /><br />
+        </div>
+        <div id="environmentalPage">
+          Environmental Impact:<br />
+          <br />
+          The environmental impact of construction depends not only on the
+          energy consumed in operating a building, but in energy consumed or
+          'embodied' in the material through sourcing, manufacture, transport,
+          amd assembly. Additionall, toxins and other ecological and soccial
+          injuries need to be accounted for. the exact calculations are
+          complicated and debatable, but that's no reason to ignore them. They
+          are the subject of several other chapters. <br /><br />
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
